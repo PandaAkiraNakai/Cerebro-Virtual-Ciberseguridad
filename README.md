@@ -17,10 +17,10 @@
 
 ---
 
-**Vault de Obsidian** con más de 100 notas de **redes, ciberseguridad ofensiva y defensiva, Linux, IoT y cloud**. Cubre desde configuración de equipos Cisco/MikroTik y enrutamiento dinámico hasta pentesting web (OWASP), Active Directory, post-explotación, pivoting, IDS/IPS, automatización con Ansible y despliegues en AWS. Cada nota está enlazada en un grafo de conocimiento navegable; los adjuntos (scripts, sketches, firmware) viven en `_adjuntos/`.
+**Vault de Obsidian** con más de 130 notas de **redes, ciberseguridad ofensiva y defensiva, Linux, IoT y cloud**. Cubre desde configuración de equipos Cisco/MikroTik y enrutamiento dinámico hasta pentesting web (OWASP), Active Directory, post-explotación, pivoting, IDS/IPS, automatización con Ansible y despliegues en AWS. Cada nota está enlazada en un grafo de conocimiento navegable; los adjuntos (scripts, sketches, firmware) viven en `_adjuntos/`.
 
 <!-- profile-excerpt -->
-Vault Obsidian de **redes y ciberseguridad** — 99 notas en 26 secciones: **Cisco IOS / MikroTik**, administración **Linux**, **reconocimiento** (OSINT, Nmap, nuclei), **pentesting** y defensa (firewalls, **IDS/IPS**, criptografía, phishing), **seguridad web** (12 vulns OWASP), **post-explotación** (escalada Linux/Windows, pivoting, **Active Directory**), **monitoreo** (Zabbix / Splunk / Wireshark), **IoT / Meshtastic**, **cloud** y servicios. Grafo de conocimiento navegable con nota índice **MOC** como cabeza del cerebro. `// net-codex · blue+red · knowledge-graph`
+Vault Obsidian de **redes y ciberseguridad** — 130 notas en 27 secciones: **Cisco IOS / MikroTik**, administración **Linux**, **reconocimiento** (OSINT, Nmap, nuclei), **pentesting** y defensa (firewalls, **IDS/IPS**, criptografía, phishing), **seguridad web** (45 vulns OWASP), **post-explotación** (escalada Linux/Windows, pivoting, **Active Directory**), **monitoreo** (Zabbix / Splunk / Wireshark), **IoT / Meshtastic**, **cloud** y servicios. Grafo de conocimiento navegable con nota índice **MOC** como cabeza del cerebro. `// net-codex · blue+red · knowledge-graph`
 <!-- /profile-excerpt -->
 
 > El punto de entrada del vault es la nota índice **`🗺️ MOC Ciberseguridad y Redes`**, que enlaza y organiza todo el conocimiento. El README queda fuera del grafo de Obsidian a propósito.
@@ -54,7 +54,7 @@ Vault Obsidian de **redes y ciberseguridad** — 99 notas en 26 secciones: **Cis
 | 22 | Automatización | Ansible |
 | 23 | Programación | Scripts SMI (consola y GUI), servidor MQTT → MySQL en Python |
 | 24 | Reconocimiento | OSINT pasivo (theHarvester, Shodan, FOFA), reconocimiento activo de red, reconocimiento web (subfinder, nuclei) |
-| 25 | Seguridad Web | SQLi, inyección de comandos, SSTI, XXE, XSS, CSRF, SSRF, LFI/RFI, Path Traversal, subida insegura, IDOR, deserialización |
+| 25 | Seguridad Web | 45 vulns OWASP/PayloadsAllTheThings — inyección (SQLi, comandos, SSTI, XXE, CRLF, LDAP, NoSQL, XSLT, XPath, SSI, HPP), cross-site/cliente (XSS, CSRF, Clickjacking, CORS, CSS, WebSockets, DOM Clobbering, Tabnabbing, XS-Leaks), SSRF/redirección, archivos/rutas, lógica/acceso (IDOR, deserialización, race conditions, type juggling, ORM leak, mass assignment…), autenticación (JWT, SAML, OAuth, account takeover, fuerza bruta), API (GraphQL, fugas de API keys) |
 | 26 | Post-Explotación | Escalada de privilegios Linux/Windows, persistencia, pivoting de red, Active Directory (ataques) |
 
 ### `> ./_adjuntos/`
