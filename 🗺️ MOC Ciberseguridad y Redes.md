@@ -13,8 +13,8 @@ aliases:
 
 Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: equipos **Cisco IOS** y **MikroTik**, administración de **Linux**, **pentesting** y **seguridad defensiva** (firewalls, IDS/IPS, criptografía), **monitoreo** (Zabbix, Splunk, Wireshark), **IoT/Meshtastic**, **cloud** y **servicios**.
 
-> [!info] Origen
-> Reorganizado y reescrito a partir del repositorio público [pulentoski/repositorio-configuraciones](https://github.com/pulentoski/repositorio-configuraciones). Las guías originales en PDF se conservan localmente en `_adjuntos/` y **no se publican** (privacidad); cada nota es autocontenida.
+> [!info] Origen y fuentes
+> Reorganizado y reescrito a partir de repositorios públicos. Atribución, licencias y aviso de uso ético en [[📜 Fuentes y Licencias]]. Las guías originales en PDF se conservan localmente y **no se publican** (privacidad); cada nota es autocontenida.
 
 ---
 
@@ -161,5 +161,37 @@ Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: e
 
 ---
 
+# 🔓 Seguridad ofensiva / Pentesting
+
+## 25 · Seguridad Web (OWASP / PayloadsAllTheThings)
+> [!warning] Contenido para pruebas **autorizadas/educativas**. Ver [[📜 Fuentes y Licencias]].
+
+**Inyección**
+- [[Inyección SQL (SQLi)]] — union / blind / error-based, second-order y bypass de WAF.
+- [[Inyección de comandos]] — ejecución de comandos del SO vía entrada no saneada.
+- [[SSTI (Server-Side Template Injection)]] — Jinja2 / Twig / Freemarker hasta RCE.
+- [[XXE (XML External Entity)]] — lectura de archivos, SSRF y OOB vía entidades XML.
+
+**Cross-site y cliente**
+- [[XSS (Cross-Site Scripting)]] — reflejado, almacenado, DOM y bypass de filtros.
+- [[CSRF (Cross-Site Request Forgery)]] — forzar acciones y bypass de tokens.
+
+**SSRF y redirección**
+- [[SSRF (Server-Side Request Forgery)]] — acceso a interno / metadata cloud y bypass de filtros.
+
+**Archivos y rutas**
+- [[Inclusión de archivos (LFI-RFI)]] — wrappers `php://`, log poisoning, RCE.
+- [[Path Traversal]] — lectura fuera de la raíz con `../` y encodings.
+- [[Subida de archivos insegura]] — bypass de extensión / MIME / magic bytes.
+
+**Lógica y acceso**
+- [[IDOR]] — acceso a objetos ajenos por enumeración de identificadores.
+- [[Deserialización insegura]] — gadgets en PHP / Java / Python (pickle) hacia RCE.
+
+> [!note] En construcción
+> Próximas fases: resto de vulns web, reconocimiento, post-explotación y escalada, Active Directory, Metasploit y catálogo de herramientas de Kali.
+
+---
+
 ## 🔖 Etiquetas principales
-`#cisco` · `#enrutamiento` · `#switching` · `#seguridad` · `#qos` · `#acl` · `#dhcp` · `#vlan` · `#ssh` · `#mikrotik` · `#fundamentos` · `#linux` · `#systemd` · `#docker` · `#criptografia` · `#firewall` · `#ids` · `#pentesting` · `#phishing` · `#monitoreo` · `#zabbix` · `#iot` · `#mqtt` · `#meshtastic` · `#cloud` · `#aws` · `#automatizacion` · `#programacion`
+`#cisco` · `#enrutamiento` · `#switching` · `#seguridad` · `#qos` · `#acl` · `#dhcp` · `#vlan` · `#ssh` · `#mikrotik` · `#fundamentos` · `#linux` · `#systemd` · `#docker` · `#criptografia` · `#firewall` · `#ids` · `#pentesting` · `#phishing` · `#monitoreo` · `#zabbix` · `#iot` · `#mqtt` · `#meshtastic` · `#cloud` · `#aws` · `#automatizacion` · `#programacion` · `#seguridad-web` · `#owasp` · `#pentesting` · `#sqli` · `#xss` · `#ssrf`
