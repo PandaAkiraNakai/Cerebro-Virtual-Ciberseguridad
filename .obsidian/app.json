@@ -1,0 +1,12 @@
+{
+  "attachmentFolderPath": "_adjuntos",
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "showUnsupportedFiles": true,
+  "promptDelete": false,
+  "userIgnoreFilters": [
+    "README.md",
+    "LICENSE"
+  ]
+}

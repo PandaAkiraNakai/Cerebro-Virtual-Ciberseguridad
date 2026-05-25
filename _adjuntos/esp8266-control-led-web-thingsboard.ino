@@ -1,0 +1,263 @@
+#if defined(ESP32)
+  #include <WiFi.h>
+  #include <WebServer.h>
+  #include <PubSubClient.h>
+#elif defined(ESP8266)
+  #include <ESP8266WiFi.h>
+  #include <ESP8266WebServer.h>
+  #include <PubSubClient.h>
+#endif
+
+#include <ArduinoJson.h>
+
+// ------------------ CONFIGURACION ------------------
+
+const char* ssid = "TU_WIFI_SSID";
+const char* password = "TU_WIFI_PASSWORD";
+
+const char* mqtt_server = "IP_DEL_SERVIDOR_THINGSBOARD";  // IP del servidor ThingsBoard
+const int mqtt_port = 1883;
+const char* access_token = "TU_TOKEN_THINGSBOARD";
+
+const int ledPin = 2;  // LED integrado en NodeMCU = GPIO2
+bool ledState = false;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+#if defined(ESP32)
+  WebServer server(80);
+#elif defined(ESP8266)
+  ESP8266WebServer server(80);
+#endif
+
+// ------------------ FUNCIONES ------------------
+
+String extractRequestId(const char* topic) {
+  String t = topic;
+  int lastSlash = t.lastIndexOf('/');
+  return t.substring(lastSlash + 1);
+}
+
+void sendTelemetryAndAttributes() {
+  String payload = "{\"led\":";
+  payload += (ledState ? "true" : "false");
+  payload += "}";
+
+  client.publish("v1/devices/me/telemetry", payload.c_str());
+  client.publish("v1/devices/me/attributes", payload.c_str());  // importante para el widget LED Indicator
+  Serial.println("Enviado a ThingsBoard: " + payload);
+}
+
+void setLed(bool state) {
+  ledState = state;
+  digitalWrite(ledPin, ledState ? LOW : HIGH);  // LOW = encendido para LED interno
+  sendTelemetryAndAttributes();
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("RPC recibido en: ");
+  Serial.println(topic);
+
+  StaticJsonDocument<200> doc;
+  DeserializationError error = deserializeJson(doc, payload, length);
+  if (error) {
+    Serial.print("Error al parsear JSON: ");
+    Serial.println(error.c_str());
+    return;
+  }
+
+  const char* method = doc["method"];
+
+  if (method && strcmp(method, "setLED") == 0) {
+    bool param = doc["params"];
+    setLed(param);
+
+    String requestId = extractRequestId(topic);
+    String responseTopic = "v1/devices/me/rpc/response/" + requestId;
+    client.publish(responseTopic.c_str(), param ? "true" : "false");
+    Serial.println("Respuesta RPC enviada.");
+    return;
+  }
+
+  if (method && strcmp(method, "checkStatus") == 0) {
+    bool status = ledState;
+    String requestId = extractRequestId(topic);
+    String responseTopic = "v1/devices/me/rpc/response/" + requestId;
+    String response = status ? "true" : "false";
+    client.publish(responseTopic.c_str(), response.c_str());
+    Serial.println("Estado del LED reportado al widget.");
+    return;
+  }
+}
+
+void reconnect() {
+  while (!client.connected()) {
+    Serial.print("Conectando a MQTT... ");
+    if (client.connect("ESPClient", access_token, NULL)) {
+      Serial.println("Conectado.");
+      client.subscribe("v1/devices/me/rpc/request/+");
+      sendTelemetryAndAttributes();  // para que ThingsBoard sepa el estado tras reconexion
+    } else {
+      Serial.print("Fallo. Codigo: ");
+      Serial.print(client.state());
+      Serial.println(". Reintentando en 5s...");
+      delay(5000);
+    }
+  }
+}
+
+void handleRoot() {
+  server.send(200, "text/html", getHTML());
+}
+
+void handleOn() {
+  setLed(true);
+  server.sendHeader("Location", "/");
+  server.send(303);
+}
+
+void handleOff() {
+  setLed(false);
+  server.sendHeader("Location", "/");
+  server.send(303);
+}
+
+void handleStatus() {
+  String status = "{\"led\":";
+  status += (ledState ? "true" : "false");
+  status += "}";
+  server.send(200, "application/json", status);
+}
+
+String getHTML() {
+  String stateText = ledState ? "ENCENDIDO" : "APAGADO";
+  String stateColor = ledState ? "#4CAF50" : "#f44336";
+  String html = R"====(
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control de LED</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background-color: rgba(0,0,0,0.4);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 320px;
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .status {
+      margin: 20px 0;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: )====" + stateColor + R"====(;
+      border-radius: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 16px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .on {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .off {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Control de LED</h1>
+    <div class="status" id="ledStatus">Estado: )====" + stateText + R"====(</div>
+    <form action="/on" method="POST">
+      <button class="btn on">ENCENDER</button>
+    </form>
+    <form action="/off" method="POST">
+      <button class="btn off">APAGAR</button>
+    </form>
+  </div>
+
+  <script>
+    function updateStatus() {
+      fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+          const statusDiv = document.getElementById('ledStatus');
+          if (data.led) {
+            statusDiv.textContent = 'Estado: ENCENDIDO';
+            statusDiv.style.backgroundColor = '#4CAF50';
+          } else {
+            statusDiv.textContent = 'Estado: APAGADO';
+            statusDiv.style.backgroundColor = '#f44336';
+          }
+        });
+    }
+    setInterval(updateStatus, 2000);
+  </script>
+</body>
+</html>
+)====";
+  return html;
+}
+
+// ------------------ SETUP Y LOOP ------------------
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, HIGH);  // LED apagado al inicio
+
+  WiFi.begin(ssid, password);
+  Serial.print("Conectando a WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi conectado. IP: " + WiFi.localIP().toString());
+
+  client.setServer(mqtt_server, mqtt_port);
+  client.setCallback(callback);
+
+  server.on("/", HTTP_GET, handleRoot);
+  server.on("/on", HTTP_POST, handleOn);
+  server.on("/off", HTTP_POST, handleOff);
+  server.on("/status", HTTP_GET, handleStatus);
+  server.begin();
+}
+
+void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+  server.handleClient();
+}

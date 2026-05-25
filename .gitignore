@@ -1,0 +1,21 @@
+# Estado de workspace de Obsidian (cambia con cada sesión, máquina-específico)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+
+# Papelera interna de Obsidian
+.trash/
+
+# Claude Code local
+.claude/
+
+# PDFs originales: se conservan localmente en _adjuntos/ pero NO se publican.
+# Contienen datos de terceros (nombre de docente, huellas institucionales) y
+# credenciales del material fuente. Las notas .md son autocontenidas.
+_adjuntos/*.pdf
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.swp
+*~
