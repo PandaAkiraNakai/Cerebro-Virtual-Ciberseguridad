@@ -248,13 +248,24 @@ aliases:
 - [[Inyección de comandos]] — ejecución de comandos del SO vía entrada no saneada.
 - [[SSTI (Server-Side Template Injection)]] — Jinja2 / Twig / Freemarker hasta RCE.
 - [[XXE (XML External Entity)]] — lectura de archivos, SSRF y OOB vía entidades XML.
+- [[Inyección CRLF]] — HTTP response splitting, envenenamiento de cabeceras y de logs.
+- [[Inyección LDAP]] — manipulación de filtros LDAP para bypass de login y fuga de atributos.
+- [[Inyección NoSQL]] — operadores Mongo (`$ne`, `$gt`, `$regex`) para bypass y extracción.
+- [[Inyección XSLT]] — transformaciones XSLT abusivas: lectura de archivos, SSRF y RCE.
 
 **Cross-site y cliente**
 - [[XSS (Cross-Site Scripting)]] — reflejado, almacenado, DOM y bypass de filtros.
 - [[CSRF (Cross-Site Request Forgery)]] — forzar acciones y bypass de tokens.
+- [[Clickjacking]] — iframe transparente para secuestrar clics; defensa con CSP/frame-busting.
+- [[CORS mal configurado]] — política permisiva que filtra respuestas cross-origin con credenciales.
+- [[Inyección CSS]] — CSS no confiable para exfiltración por selectores de atributo.
+- [[WebSockets (seguridad)]] — CSWSH, falta de validación de origen y túnel de tráfico.
 
 **SSRF y redirección**
 - [[SSRF (Server-Side Request Forgery)]] — acceso a interno / metadata cloud y bypass de filtros.
+- [[HTTP Request Smuggling]] — desincronización front/back (CL.TE / TE.CL) para envenenar peticiones.
+- [[Open Redirect]] — redirección a dominios externos; pivote a phishing y robo de tokens OAuth.
+- [[Reverse Proxy mal configurado]] — path confusion, header smuggling y acceso a rutas internas.
 
 **Archivos y rutas**
 - [[Inclusión de archivos (LFI-RFI)]] — wrappers `php://`, log poisoning, RCE.
@@ -264,9 +275,20 @@ aliases:
 **Lógica y acceso**
 - [[IDOR]] — acceso a objetos ajenos por enumeración de identificadores.
 - [[Deserialización insegura]] — gadgets en PHP / Java / Python (pickle) hacia RCE.
+- [[Race Conditions]] — peticiones concurrentes para superar límites (limit-overrun, bypass de rate limit).
+- [[Type Juggling (PHP)]] — comparaciones laxas (`==`) para bypass de login y hashes mágicos.
+- [[ORM Leak]] — entrada del usuario como filtros del ORM: exfiltración campo a campo.
+- [[Aleatoriedad insegura]] — tokens/IDs predecibles por PRNG débil o semilla temporal.
+
+**Autenticación y sesión**
+- [[JWT (JSON Web Token)]] — `alg:none`, confusión de algoritmo, claves débiles y manipulación de claims.
+- [[Ataques SAML]] — manipulación de aserciones, XSW y firma omitida para suplantación.
+
+**API y dependencias**
+- [[GraphQL (ataques)]] — introspección, batching, DoS por anidamiento e IDOR vía esquema.
 
 > [!note] En construcción
-> Próximas fases: Metasploit (módulos avanzados) y catálogo de herramientas de Kali.
+> Próximas fases: resto de vulns (HPP, XS-Leaks, Web Cache Deception, Mass Assignment, OAuth, etc.), Metasploit (módulos avanzados) y catálogo de herramientas de Kali.
 
 ---
 
