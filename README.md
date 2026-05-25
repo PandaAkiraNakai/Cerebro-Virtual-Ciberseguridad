@@ -17,7 +17,7 @@
 
 ---
 
-**Vault de Obsidian** con apuntes de **redes, ciberseguridad ofensiva y defensiva, Linux, IoT y cloud**. Cubre desde configuración de equipos Cisco/MikroTik hasta pentesting web, IDS/IPS, automatización con Ansible y despliegues en AWS. Cada nota está enlazada en un grafo de conocimiento navegable; los adjuntos (scripts, sketches, firmware) viven en `_adjuntos/`.
+**Vault de Obsidian** con más de 100 notas de **redes, ciberseguridad ofensiva y defensiva, Linux, IoT y cloud**. Cubre desde configuración de equipos Cisco/MikroTik y enrutamiento dinámico hasta pentesting web (OWASP), Active Directory, post-explotación, pivoting, IDS/IPS, automatización con Ansible y despliegues en AWS. Cada nota está enlazada en un grafo de conocimiento navegable; los adjuntos (scripts, sketches, firmware) viven en `_adjuntos/`.
 
 > El punto de entrada del vault es la nota índice **`🗺️ MOC Ciberseguridad y Redes`**, que enlaza y organiza todo el conocimiento. El README queda fuera del grafo de Obsidian a propósito.
 
@@ -49,7 +49,9 @@
 | 21 | Servicios | PBX (Asterisk/FreePBX) en AWS, SQL (notas), servidor IPTV con TVHeadend |
 | 22 | Automatización | Ansible |
 | 23 | Programación | Scripts SMI (consola y GUI), servidor MQTT → MySQL en Python |
+| 24 | Reconocimiento | OSINT pasivo (theHarvester, Shodan, FOFA), reconocimiento activo de red, reconocimiento web (subfinder, nuclei) |
 | 25 | Seguridad Web | SQLi, inyección de comandos, SSTI, XXE, XSS, CSRF, SSRF, LFI/RFI, Path Traversal, subida insegura, IDOR, deserialización |
+| 26 | Post-Explotación | Escalada de privilegios Linux/Windows, persistencia, pivoting de red, Active Directory (ataques) |
 
 ### `> ./_adjuntos/`
 
@@ -71,9 +73,18 @@ git clone https://github.com/PandaAkiraNakai/Cerebro-Virtual-Ciberseguridad.git
 
 Abre la carpeta como vault en [Obsidian](https://obsidian.md) y arranca por la nota **`🗺️ MOC Ciberseguridad y Redes`**. Activa la vista de **grafo** para navegar las conexiones entre temas.
 
-## `> ./origen.sh`
+## `> ./sources.sh`
 
-Apuntes reorganizados y ampliados a partir del repositorio público [`pulentoski/repositorio-configuraciones` → `/Redes`](https://github.com/pulentoski/repositorio-configuraciones/tree/main/Redes). Material con fines educativos. Todas las contraseñas y direcciones de los ejemplos son ficticias / de laboratorio.
+El vault reúne y reescribe material de estudio de las siguientes fuentes públicas. Atribución completa y aviso de uso ético en la nota interna `📜 Fuentes y Licencias`.
+
+| Repo | Licencia | Secciones del vault |
+|------|----------|---------------------|
+| [swisskyrepo/PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) | MIT | 24 · 25 · 26 (reconocimiento, seguridad web, post-explotación, AD) |
+| [swisskyrepo/InternalAllTheThings](https://swisskyrepo.github.io/InternalAllTheThings/) | MIT | 26 (escalada, pivoting, Active Directory) |
+| [pulentoski/repositorio-configuraciones](https://github.com/pulentoski/repositorio-configuraciones/tree/main/Redes) | — | 00–23 (redes, Cisco, Linux, IoT, cloud) |
+| [aw-junaid/Kali-Linux](https://github.com/aw-junaid/Kali-Linux) | MIT | Fase futura — catálogo de herramientas Kali |
+
+> Todas las contraseñas, IPs y nombres de dominio en los ejemplos son ficticios / de laboratorio. Material con fines educativos.
 
 ---
 

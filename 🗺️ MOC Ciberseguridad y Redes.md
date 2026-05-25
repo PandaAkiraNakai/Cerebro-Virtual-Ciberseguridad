@@ -238,6 +238,7 @@ aliases:
 - [[Escalada de Privilegios Windows]] — WinPEAS, tokens (Potato), servicios, AlwaysInstallElevated, DLL hijacking, Pass-the-Hash.
 - [[Persistencia Post-Explotación]] — crontab, systemd, SSH keys, registro, tareas programadas, reverse shells.
 - [[Pivoting de Red]] — SSH tunneling, proxychains, Chisel, Ligolo-ng, netsh, graftcp.
+- [[Active Directory — Ataques]] — enumeración (BloodHound), AS-REP/Kerberoasting, DCSync, Golden/Silver Ticket, NTLM Relay, abuso de ACLs y delegación.
 
 ## 25 · Seguridad Web (OWASP / PayloadsAllTheThings)
 > [!warning] Contenido para pruebas **autorizadas/educativas**. Ver [[📜 Fuentes y Licencias]].
@@ -265,7 +266,7 @@ aliases:
 - [[Deserialización insegura]] — gadgets en PHP / Java / Python (pickle) hacia RCE.
 
 > [!note] En construcción
-> Próximas fases: resto de vulns web, reconocimiento, post-explotación y escalada, Active Directory, Metasploit y catálogo de herramientas de Kali.
+> Próximas fases: Metasploit (módulos avanzados) y catálogo de herramientas de Kali.
 
 ---
 
