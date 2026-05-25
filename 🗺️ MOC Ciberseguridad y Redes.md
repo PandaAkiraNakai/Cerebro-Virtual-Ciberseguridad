@@ -11,12 +11,64 @@ aliases:
 
 # 🗺️ MOC — Ciberseguridad y Redes
 
-Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: equipos **Cisco IOS** y **MikroTik**, administración de **Linux**, **pentesting** y **seguridad defensiva** (firewalls, IDS/IPS, criptografía), **monitoreo** (Zabbix, Splunk, Wireshark), **IoT/Meshtastic**, **cloud** y **servicios**.
-
 > [!info] Origen y fuentes
 > Reorganizado y reescrito a partir de repositorios públicos. Atribución, licencias y aviso de uso ético en [[📜 Fuentes y Licencias]]. Las guías originales en PDF se conservan localmente y **no se publican** (privacidad); cada nota es autocontenida.
 
 ---
+
+## ⚡ Navegación rápida
+
+| Área | Saltar a |
+|------|----------|
+| 🌐 Redes y Cisco | [Fundamentos](#00--fundamentos) · [Cisco IOS](#01--cisco-ios--operación) · [Direccionamiento](#02--direccionamiento-y-dhcp) · [Enrutamiento](#03--enrutamiento-dinámico) · [Switching](#04--switching-y-vlan) · [ACL](#05--listas-de-control-de-acceso-acl) · [QoS](#06--calidad-de-servicio-qos) |
+| 🔒 Seguridad Cisco | [Seguridad Cisco](#07--seguridad-cisco) · [Conexiones remotas](#08--conexiones-remotas) · [MikroTik](#09--mikrotik) |
+| 💻 Sistemas | [Linux](#10--sistemas-operativos-linux) · [Contenedores y AD](#11--contenedores-y-directorio-activo) |
+| 🛡️ Defensiva | [Criptografía](#12--criptografía) · [Firewalls](#13--firewalls) · [IDS/IPS](#14--ids-e-ips) |
+| ⚔️ Ofensiva | [Pentesting](#15--pentesting) · [Phishing](#16--phishing) · [Seguridad Web](#25--seguridad-web-owasp--payloadsallthethings) |
+| 📊 Monitoreo | [Monitoreo](#17--monitoreo-y-rendimiento) |
+| 📡 IoT / Cloud | [IoT](#18--iot) · [Meshtastic](#19--meshtastic) · [Cloud](#20--cloud) · [Servicios](#21--servicios) |
+| ⚙️ Dev | [Automatización](#22--automatización) · [Programación](#23--programación) |
+
+---
+
+## 🔍 Índice por herramienta
+
+| Herramienta | Nota |
+|-------------|------|
+| Ansible | [[Ansible]] |
+| ARP Spoofing / Bettercap | [[ARP Spoofing y MitM]] |
+| AWS | [[AWS - VPC, subredes, balanceo y autoescalado]] |
+| Docker | [[Comandos Docker]] · [[ThingsBoard en Docker]] · [[Laboratorio DVWA (CTF)]] |
+| ESP8266 | [[ESP8266 sketches y firmware]] |
+| fail2ban / UFW / Lynis | [[08 - Seguridad del servidor]] |
+| FreePBX / Asterisk | [[PBX (Asterisk - FreePBX) en AWS]] · [[QoS en router y switch con FreePBX]] |
+| Gobuster / WFuzz | [[Fuzzing de Directorios y Subdominios]] |
+| GoPhish | [[GoPhish]] |
+| GPG | [[GPG - cifrado asimétrico y firmas]] |
+| Hydra | [[Pentesting en Redes]] |
+| iperf3 | [[iperf3 test de velocidad real]] |
+| iptables | [[iptables]] |
+| Kali Linux | [[Laboratorio Kali Linux en Windows]] |
+| Metasploit / msfvenom | [[Metasploit y Payload Reverse TCP]] |
+| Meshtastic / LoRa | [[Meshtastic comandos y scripts]] |
+| MQTT / Mosquitto | [[MQTT con Mosquitto en Debian]] · [[Panel y comandos MQTT (Python)]] · [[Servidor MQTT a MySQL (Python)]] · [[Envío de mensajes MQTT desde PHP]] |
+| MySQL / phpMyAdmin | [[MySQL + phpMyAdmin]] · [[Servidor MQTT a MySQL (Python)]] |
+| Nmap | [[Nmap]] · [[Pentesting en Redes]] |
+| OpenSSL | [[OpenSSL]] |
+| pfSense | [[Portal cautivo en pfSense]] |
+| Raspberry Pi | [[SSH en Raspberry Pi OS]] · [[Raspberry Pi pantalla OLED]] |
+| Snort | [[Snort]] |
+| Splunk | [[Splunk Enterprise]] |
+| SSH | [[SSH en Cisco]] · [[SSH en Linux]] · [[SSH en Raspberry Pi OS]] |
+| Suricata | [[Suricata]] |
+| ThingsBoard | [[ThingsBoard en Docker]] · [[ESP8266 sketches y firmware]] |
+| TVHeadend | [[Servidor IPTV con TVHeadend]] |
+| Wireshark | [[Wireshark]] |
+| Zabbix / SNMP | [[Zabbix y SNMP en Cisco]] · [[Zabbix y SNMP en MikroTik]] |
+
+---
+
+# 🌐 Redes
 
 ## 00 · Fundamentos
 - [[Capacity Planning y QoS]] — dimensionamiento de ancho de banda, overhead, codecs y métricas de QoS.
@@ -51,7 +103,7 @@ Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: e
 - [[QoS para voz sin switch administrable]]
 - [[QoS en router y switch con FreePBX]]
 
-## 07 · Seguridad
+## 07 · Seguridad Cisco
 - [[Seguridad en la Capa 2]] — mapa de ataques y mitigaciones L2.
 - [[Port Security]]
 - [[DHCP Snooping]]
@@ -91,7 +143,7 @@ Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: e
 
 ---
 
-# 🛡️ Ciberseguridad
+# 🛡️ Ciberseguridad defensiva
 
 ## 12 · Criptografía
 - [[GPG - cifrado asimétrico y firmas]] — cifrado/descifrado, firmas digitales e intercambio de claves con GnuPG (OpenPGP).
@@ -104,6 +156,10 @@ Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: e
 ## 14 · IDS e IPS
 - [[Snort]] — IDS/IPS: modos, reglas, preprocesadores e instalación en modo IPS.
 - [[Suricata]] — IDS/IPS: instalación, `suricata.yaml`, reglas ET Open, logs y modos.
+
+---
+
+# ⚔️ Ciberseguridad ofensiva
 
 ## 15 · Pentesting
 - [[Nmap]] — descubrimiento de hosts, puertos, servicios y SO.
@@ -161,7 +217,7 @@ Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: e
 
 ---
 
-# 🔓 Seguridad ofensiva / Pentesting
+# 🔓 Seguridad Web
 
 ## 25 · Seguridad Web (OWASP / PayloadsAllTheThings)
 > [!warning] Contenido para pruebas **autorizadas/educativas**. Ver [[📜 Fuentes y Licencias]].
@@ -194,4 +250,5 @@ Mapa de contenidos del vault. Apuntes de **redes, sistemas y ciberseguridad**: e
 ---
 
 ## 🔖 Etiquetas principales
-`#cisco` · `#enrutamiento` · `#switching` · `#seguridad` · `#qos` · `#acl` · `#dhcp` · `#vlan` · `#ssh` · `#mikrotik` · `#fundamentos` · `#linux` · `#systemd` · `#docker` · `#criptografia` · `#firewall` · `#ids` · `#pentesting` · `#phishing` · `#monitoreo` · `#zabbix` · `#iot` · `#mqtt` · `#meshtastic` · `#cloud` · `#aws` · `#automatizacion` · `#programacion` · `#seguridad-web` · `#owasp` · `#pentesting` · `#sqli` · `#xss` · `#ssrf`
+
+`#cisco` · `#enrutamiento` · `#switching` · `#seguridad` · `#qos` · `#acl` · `#dhcp` · `#vlan` · `#ssh` · `#mikrotik` · `#fundamentos` · `#linux` · `#systemd` · `#docker` · `#criptografia` · `#firewall` · `#ids` · `#pentesting` · `#phishing` · `#monitoreo` · `#zabbix` · `#iot` · `#mqtt` · `#meshtastic` · `#cloud` · `#aws` · `#automatizacion` · `#programacion` · `#seguridad-web` · `#owasp` · `#sqli` · `#xss` · `#ssrf`
