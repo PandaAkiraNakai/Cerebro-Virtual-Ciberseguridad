@@ -24,7 +24,7 @@ aliases:
 | 🔒 Seguridad Cisco | [Seguridad Cisco](#07--seguridad-cisco) · [Conexiones remotas](#08--conexiones-remotas) · [MikroTik](#09--mikrotik) |
 | 💻 Sistemas | [Linux](#10--sistemas-operativos-linux) · [Contenedores y AD](#11--contenedores-y-directorio-activo) |
 | 🛡️ Defensiva | [Criptografía](#12--criptografía) · [Firewalls](#13--firewalls) · [IDS/IPS](#14--ids-e-ips) |
-| ⚔️ Ofensiva | [Reconocimiento](#24--reconocimiento) · [Pentesting](#15--pentesting) · [Phishing](#16--phishing) · [Seguridad Web](#25--seguridad-web-owasp--payloadsallthethings) |
+| ⚔️ Ofensiva | [Reconocimiento](#24--reconocimiento) · [Pentesting](#15--pentesting) · [Post-Explotación](#26--post-explotación) · [Phishing](#16--phishing) · [Seguridad Web](#25--seguridad-web-owasp--payloadsallthethings) |
 | 📊 Monitoreo | [Monitoreo](#17--monitoreo-y-rendimiento) |
 | 📡 IoT / Cloud | [IoT](#18--iot) · [Meshtastic](#19--meshtastic) · [Cloud](#20--cloud) · [Servicios](#21--servicios) |
 | ⚙️ Dev | [Automatización](#22--automatización) · [Programación](#23--programación) |
@@ -58,6 +58,11 @@ aliases:
 | subfinder / amass | [[Reconocimiento Web]] · [[Reconocimiento Pasivo (OSINT)]] |
 | theHarvester | [[Reconocimiento Pasivo (OSINT)]] |
 | Shodan / FOFA | [[Reconocimiento Pasivo (OSINT)]] |
+| LinPEAS / WinPEAS | [[Escalada de Privilegios Linux]] · [[Escalada de Privilegios Windows]] |
+| GTFOBins | [[Escalada de Privilegios Linux]] |
+| Chisel / Ligolo-ng | [[Pivoting de Red]] |
+| proxychains | [[Pivoting de Red]] |
+| Impacket | [[Escalada de Privilegios Windows]] · [[Active Directory — Ataques]] |
 | OpenSSL | [[OpenSSL]] |
 | pfSense | [[Portal cautivo en pfSense]] |
 | Raspberry Pi | [[SSH en Raspberry Pi OS]] · [[Raspberry Pi pantalla OLED]] |
@@ -227,6 +232,12 @@ aliases:
 ---
 
 # 🔓 Seguridad Web
+
+## 26 · Post-Explotación
+- [[Escalada de Privilegios Linux]] — LinPEAS, SUID, capabilities, sudo, cron, NFS, docker/LXD, kernel exploits.
+- [[Escalada de Privilegios Windows]] — WinPEAS, tokens (Potato), servicios, AlwaysInstallElevated, DLL hijacking, Pass-the-Hash.
+- [[Persistencia Post-Explotación]] — crontab, systemd, SSH keys, registro, tareas programadas, reverse shells.
+- [[Pivoting de Red]] — SSH tunneling, proxychains, Chisel, Ligolo-ng, netsh, graftcp.
 
 ## 25 · Seguridad Web (OWASP / PayloadsAllTheThings)
 > [!warning] Contenido para pruebas **autorizadas/educativas**. Ver [[📜 Fuentes y Licencias]].
