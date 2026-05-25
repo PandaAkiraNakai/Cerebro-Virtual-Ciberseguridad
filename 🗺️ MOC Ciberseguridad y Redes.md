@@ -252,6 +252,9 @@ aliases:
 - [[Inyección LDAP]] — manipulación de filtros LDAP para bypass de login y fuga de atributos.
 - [[Inyección NoSQL]] — operadores Mongo (`$ne`, `$gt`, `$regex`) para bypass y extracción.
 - [[Inyección XSLT]] — transformaciones XSLT abusivas: lectura de archivos, SSRF y RCE.
+- [[Inyección XPath]] — alterar consultas XPath sobre XML: bypass de login y blind.
+- [[SSI (Server-Side Includes)]] — directivas `<!--#exec-->` hasta RCE; variante ESI.
+- [[HTTP Parameter Pollution (HPP)]] — parámetros duplicados para burlar WAF y lógica.
 
 **Cross-site y cliente**
 - [[XSS (Cross-Site Scripting)]] — reflejado, almacenado, DOM y bypass de filtros.
@@ -260,12 +263,17 @@ aliases:
 - [[CORS mal configurado]] — política permisiva que filtra respuestas cross-origin con credenciales.
 - [[Inyección CSS]] — CSS no confiable para exfiltración por selectores de atributo.
 - [[WebSockets (seguridad)]] — CSWSH, falta de validación de origen y túnel de tráfico.
+- [[DOM Clobbering]] — sobrescribir globales del DOM solo con HTML (sin JS).
+- [[Tabnabbing]] — `window.opener` redirige la pestaña original a phishing.
+- [[XS-Leaks]] — canales laterales cross-origin (timing, conteo de frames, errores).
 
 **SSRF y redirección**
 - [[SSRF (Server-Side Request Forgery)]] — acceso a interno / metadata cloud y bypass de filtros.
 - [[HTTP Request Smuggling]] — desincronización front/back (CL.TE / TE.CL) para envenenar peticiones.
 - [[Open Redirect]] — redirección a dominios externos; pivote a phishing y robo de tokens OAuth.
 - [[Reverse Proxy mal configurado]] — path confusion, header smuggling y acceso a rutas internas.
+- [[Web Cache Deception]] — engañar a la caché para que guarde datos privados del usuario.
+- [[Virtual Hosts (vhost enumeration)]] — sitios ocultos por cabecera `Host` en una misma IP.
 
 **Archivos y rutas**
 - [[Inclusión de archivos (LFI-RFI)]] — wrappers `php://`, log poisoning, RCE.
@@ -279,16 +287,23 @@ aliases:
 - [[Type Juggling (PHP)]] — comparaciones laxas (`==`) para bypass de login y hashes mágicos.
 - [[ORM Leak]] — entrada del usuario como filtros del ORM: exfiltración campo a campo.
 - [[Aleatoriedad insegura]] — tokens/IDs predecibles por PRNG débil o semilla temporal.
+- [[Errores de lógica de negocio]] — abusar del flujo previsto (precios negativos, saltar pasos).
+- [[Mass Assignment]] — asignar atributos no permitidos (`is_admin`) por autobinding.
+- [[Parámetros ocultos]] — argumentos no documentados (`debug`, `admin`) que amplían la superficie.
 
 **Autenticación y sesión**
 - [[JWT (JSON Web Token)]] — `alg:none`, confusión de algoritmo, claves débiles y manipulación de claims.
 - [[Ataques SAML]] — manipulación de aserciones, XSW y firma omitida para suplantación.
+- [[OAuth mal configurado]] — `redirect_uri` laxa, falta de `state` y robo del `code`.
+- [[Account Takeover]] — encadenar reset de contraseña, OAuth y sesión para apropiarse de cuentas.
+- [[Fuerza bruta y rate limiting]] — credenciales/OTP y bypass del límite (IP rotation, carrera).
 
 **API y dependencias**
 - [[GraphQL (ataques)]] — introspección, batching, DoS por anidamiento e IDOR vía esquema.
+- [[Fugas de API keys]] — secretos expuestos en JS, repos y apps; rotación y escaneo.
 
 > [!note] En construcción
-> Próximas fases: resto de vulns (HPP, XS-Leaks, Web Cache Deception, Mass Assignment, OAuth, etc.), Metasploit (módulos avanzados) y catálogo de herramientas de Kali.
+> Próximas fases: Metasploit (módulos avanzados) y catálogo de herramientas de Kali.
 
 ---
 
