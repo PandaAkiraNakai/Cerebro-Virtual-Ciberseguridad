@@ -24,7 +24,7 @@ aliases:
 | 🔒 Seguridad Cisco | [Seguridad Cisco](#07--seguridad-cisco) · [Conexiones remotas](#08--conexiones-remotas) · [MikroTik](#09--mikrotik) |
 | 💻 Sistemas | [Linux](#10--sistemas-operativos-linux) · [Contenedores y AD](#11--contenedores-y-directorio-activo) |
 | 🛡️ Defensiva | [Criptografía](#12--criptografía) · [Firewalls](#13--firewalls) · [IDS/IPS](#14--ids-e-ips) |
-| ⚔️ Ofensiva | [Pentesting](#15--pentesting) · [Phishing](#16--phishing) · [Seguridad Web](#25--seguridad-web-owasp--payloadsallthethings) |
+| ⚔️ Ofensiva | [Reconocimiento](#24--reconocimiento) · [Pentesting](#15--pentesting) · [Phishing](#16--phishing) · [Seguridad Web](#25--seguridad-web-owasp--payloadsallthethings) |
 | 📊 Monitoreo | [Monitoreo](#17--monitoreo-y-rendimiento) |
 | 📡 IoT / Cloud | [IoT](#18--iot) · [Meshtastic](#19--meshtastic) · [Cloud](#20--cloud) · [Servicios](#21--servicios) |
 | ⚙️ Dev | [Automatización](#22--automatización) · [Programación](#23--programación) |
@@ -53,7 +53,11 @@ aliases:
 | Meshtastic / LoRa | [[Meshtastic comandos y scripts]] |
 | MQTT / Mosquitto | [[MQTT con Mosquitto en Debian]] · [[Panel y comandos MQTT (Python)]] · [[Servidor MQTT a MySQL (Python)]] · [[Envío de mensajes MQTT desde PHP]] |
 | MySQL / phpMyAdmin | [[MySQL + phpMyAdmin]] · [[Servidor MQTT a MySQL (Python)]] |
-| Nmap | [[Nmap]] · [[Pentesting en Redes]] |
+| Nmap | [[Nmap]] · [[Pentesting en Redes]] · [[Reconocimiento Activo de Red]] |
+| nuclei | [[Reconocimiento Web]] |
+| subfinder / amass | [[Reconocimiento Web]] · [[Reconocimiento Pasivo (OSINT)]] |
+| theHarvester | [[Reconocimiento Pasivo (OSINT)]] |
+| Shodan / FOFA | [[Reconocimiento Pasivo (OSINT)]] |
 | OpenSSL | [[OpenSSL]] |
 | pfSense | [[Portal cautivo en pfSense]] |
 | Raspberry Pi | [[SSH en Raspberry Pi OS]] · [[Raspberry Pi pantalla OLED]] |
@@ -160,6 +164,11 @@ aliases:
 ---
 
 # ⚔️ Ciberseguridad ofensiva
+
+## 24 · Reconocimiento
+- [[Reconocimiento Pasivo (OSINT)]] — Shodan, Wayback Machine, theHarvester, Google Dorks, GitHub OSINT, Certificate Transparency, buckets S3.
+- [[Reconocimiento Activo de Red]] — Nmap, Masscan, ARP scan, Netdiscover, NBT-NS, LDAP, DNS Zone Transfer, Reconnoitre.
+- [[Reconocimiento Web]] — subfinder, amass, ffuf, gobuster, katana, nuclei, httpx, detección de tecnologías y parámetros ocultos.
 
 ## 15 · Pentesting
 - [[Nmap]] — descubrimiento de hosts, puertos, servicios y SO.
