@@ -49,7 +49,7 @@ aliases:
 | iperf3 | [[iperf3 test de velocidad real]] |
 | iptables | [[iptables]] |
 | Kali Linux | [[Laboratorio Kali Linux en Windows]] |
-| Metasploit / msfvenom | [[Metasploit y Payload Reverse TCP]] |
+| Metasploit / msfvenom | [[Metasploit y Payload Reverse TCP]] · [[Metasploit — Módulos avanzados]] |
 | Meshtastic / LoRa | [[Meshtastic comandos y scripts]] |
 | MQTT / Mosquitto | [[MQTT con Mosquitto en Debian]] · [[Panel y comandos MQTT (Python)]] · [[Servidor MQTT a MySQL (Python)]] · [[Envío de mensajes MQTT desde PHP]] |
 | MySQL / phpMyAdmin | [[MySQL + phpMyAdmin]] · [[Servidor MQTT a MySQL (Python)]] |
@@ -181,6 +181,8 @@ aliases:
 - [[Fuzzing de Directorios y Subdominios]] — enumeración web con Gobuster, Feroxbuster y WFuzz.
 - [[ARP Spoofing y MitM]] — envenenamiento ARP, DNS Spoofing y MitM con arpspoof/Bettercap.
 - [[Metasploit y Payload Reverse TCP]] — payload con msfvenom y reverse shell Meterpreter.
+- [[Metasploit — Módulos avanzados]] — workspaces, auxiliares, msfvenom multi-formato, gestión de sesiones, post-explotación completa y pivoting.
+- [[Kali Linux — Herramientas (catálogo)]] — catálogo por fase: reconocimiento, explotación web, cracking, wireless, MitM, shells y wordlists.
 - [[Laboratorio DVWA (CTF)]] — app web vulnerable (OWASP) en Docker para práctica.
 - [[Laboratorio Kali Linux en Windows]] — montar Kali en WSL para un entorno de pentesting.
 
@@ -303,7 +305,7 @@ aliases:
 - [[Fugas de API keys]] — secretos expuestos en JS, repos y apps; rotación y escaneo.
 
 > [!note] En construcción
-> Próximas fases: Metasploit (módulos avanzados) y catálogo de herramientas de Kali.
+> Posibles fases siguientes: laboratorios CTF adicionales (HackTheBox / TryHackMe writeups), módulos de evasión de EDR/AV avanzados.
 
 ---
 
