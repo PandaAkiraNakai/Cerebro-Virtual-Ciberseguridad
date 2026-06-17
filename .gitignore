@@ -2,12 +2,17 @@
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .obsidian/workspaces.json
+.obsidian/graph.json
 
 # Papelera interna de Obsidian
 .trash/
 
 # Claude Code local
 .claude/
+
+# Recursos externos en construcción (se arman link por link, no se publican
+# hasta tener notas consolidadas y propias)
+_local-recursos-externos/
 
 # PDFs originales: se conservan localmente en _adjuntos/ pero NO se publican.
 # Contienen datos de terceros (nombre de docente, huellas institucionales) y
