@@ -38,10 +38,11 @@ aliases:
 | Ansible | [[Ansible]] |
 | ARP Spoofing / Bettercap | [[ARP Spoofing y MitM]] |
 | AWS | [[AWS - VPC, subredes, balanceo y autoescalado]] |
-| Docker | [[Comandos Docker]] · [[ThingsBoard en Docker]] · [[Laboratorio DVWA (CTF)]] |
+| Docker | [[Comandos Docker]] · [[ThingsBoard en Docker]] · [[Laboratorio DVWA (CTF)]] · [[GNS3 - laboratorios de red virtualizados]] |
 | ESP8266 | [[ESP8266 sketches y firmware]] |
 | fail2ban / UFW / Lynis | [[08 - Seguridad del servidor]] |
 | FreePBX / Asterisk | [[PBX (Asterisk - FreePBX) en AWS]] · [[QoS en router y switch con FreePBX]] |
+| GNS3 | [[GNS3 - laboratorios de red virtualizados]] |
 | Gobuster / WFuzz | [[Fuzzing de Directorios y Subdominios]] |
 | GoPhish | [[GoPhish]] |
 | GPG | [[GPG - cifrado asimétrico y firmas]] |
@@ -81,6 +82,7 @@ aliases:
 
 ## 00 · Fundamentos
 - [[Capacity Planning y QoS]] — dimensionamiento de ancho de banda, overhead, codecs y métricas de QoS.
+- [[GNS3 - laboratorios de red virtualizados]] — emulación de topologías con IOS real, VM y contenedores; consolas, persistencia y API.
 
 ## 01 · Cisco IOS — Operación
 - [[Configuración básica de equipos Cisco]] — hostname, contraseñas, líneas, cifrado.
