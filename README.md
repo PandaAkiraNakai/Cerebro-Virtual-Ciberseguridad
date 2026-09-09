@@ -29,7 +29,7 @@ Vault Obsidian de **redes y ciberseguridad** — 135 notas en 27 secciones: **Ci
 
 | # | Sección | Contenido |
 |---|---------|-----------|
-| 00 | Fundamentos | Capacity planning, overhead, codecs y métricas de QoS |
+| 00 | Fundamentos | GNS3 (laboratorios de red virtualizados), capacity planning, overhead, codecs y métricas de QoS |
 | 01 | Cisco IOS — Operación | Config básica, CDP/LLDP/NTP, carga de IOS por ROMMON/TFTP, recuperación de contraseña |
 | 02 | Direccionamiento y DHCP | Direcciones IP estáticas, rutas estáticas, servicio DHCP en Cisco |
 | 03 | Enrutamiento dinámico | OSPF, EIGRP y redistribución EIGRP ↔ OSPF |
