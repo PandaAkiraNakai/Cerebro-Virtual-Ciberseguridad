@@ -17,10 +17,10 @@
 
 ---
 
-**Vault de Obsidian** con más de 135 notas de **redes, ciberseguridad ofensiva y defensiva, Linux, IoT y cloud**. Cubre desde configuración de equipos Cisco/MikroTik y enrutamiento dinámico hasta pentesting web (OWASP), Active Directory, post-explotación, pivoting, IDS/IPS, automatización con Ansible y despliegues en AWS. Cada nota está enlazada en un grafo de conocimiento navegable; los adjuntos (scripts, sketches, firmware) viven en `_adjuntos/`.
+**Vault de Obsidian** con más de 140 notas de **redes, ciberseguridad ofensiva y defensiva, Linux, IoT y cloud**. Cubre desde configuración de equipos Cisco/MikroTik y enrutamiento dinámico hasta pentesting web (OWASP), Active Directory, post-explotación, pivoting, cracking de contraseñas, esteganografía, IDS/IPS, automatización con Ansible y despliegues en AWS. Cada nota está enlazada en un grafo de conocimiento navegable; los adjuntos (scripts, sketches, firmware) viven en `_adjuntos/`.
 
 <!-- profile-excerpt -->
-Vault Obsidian de **redes y ciberseguridad** — 135 notas en 27 secciones: **Cisco IOS / MikroTik**, administración **Linux**, **reconocimiento** (OSINT, Nmap, nuclei), **pentesting** (Metasploit avanzado, catálogo Kali) y defensa (firewalls, **IDS/IPS**, criptografía, phishing), **seguridad web** (45 vulns OWASP), **post-explotación** (escalada Linux/Windows, pivoting, **Active Directory**), **monitoreo** (Zabbix / Splunk / Wireshark), **IoT / Meshtastic**, **cloud** y servicios. Grafo de conocimiento navegable con nota índice **MOC** como cabeza del cerebro. `// net-codex · blue+red · knowledge-graph`
+Vault Obsidian de **redes y ciberseguridad** — más de 140 notas en 29 secciones: **Cisco IOS / MikroTik**, administración **Linux**, **reconocimiento** (OSINT, Nmap, nuclei), **pentesting** (Metasploit avanzado, catálogo Kali, WPScan, sqlmap) y defensa (firewalls, **IDS/IPS**, criptografía, phishing), **seguridad web** (45 vulns OWASP), **post-explotación** (escalada Linux/Windows, pivoting, **Active Directory**, CrackMapExec), **cracking** (Hashcat / John / Hydra) y **esteganografía**, **monitoreo** (Zabbix / Splunk / Wireshark), **IoT / Meshtastic**, **cloud** y servicios. Grafo de conocimiento navegable con nota índice **MOC** como cabeza del cerebro. `// net-codex · blue+red · knowledge-graph`
 <!-- /profile-excerpt -->
 
 > El punto de entrada del vault es la nota índice **`🗺️ MOC Ciberseguridad y Redes`**, que enlaza y organiza todo el conocimiento. El README queda fuera del grafo de Obsidian a propósito.
@@ -44,7 +44,7 @@ Vault Obsidian de **redes y ciberseguridad** — 135 notas en 27 secciones: **Ci
 | 12 | Criptografía | GPG (cifrado asimétrico y firmas), OpenSSL |
 | 13 | Firewalls | iptables, portal cautivo en pfSense |
 | 14 | IDS e IPS | Snort, Suricata |
-| 15 | Pentesting | Nmap, Metasploit + Payload Reverse TCP, **Metasploit módulos avanzados** (workspaces, auxiliares, pivoting, evasión), **catálogo herramientas Kali** (9 fases: reconocimiento → post-explotación), ARP Spoofing/MitM, fuzzing de directorios/subdominios, laboratorio DVWA, Kali en Windows |
+| 15 | Pentesting | Nmap, Metasploit + Payload Reverse TCP, **Metasploit módulos avanzados** (workspaces, auxiliares, pivoting, evasión), **catálogo herramientas Kali** (9 fases: reconocimiento → post-explotación), WPScan, sqlmap, ARP Spoofing/MitM, fuzzing de directorios/subdominios, laboratorio DVWA, Kali en Windows |
 | 16 | Phishing | GoPhish |
 | 17 | Monitoreo y rendimiento | Wireshark, Splunk Enterprise, Zabbix + SNMP en Cisco/MikroTik, iperf3 |
 | 18 | IoT | ESP8266 sketches y firmware, MQTT con Mosquitto, panel MQTT en Python, Raspberry Pi OLED, ThingsBoard en Docker |
@@ -55,7 +55,9 @@ Vault Obsidian de **redes y ciberseguridad** — 135 notas en 27 secciones: **Ci
 | 23 | Programación | Scripts SMI (consola y GUI), servidor MQTT → MySQL en Python |
 | 24 | Reconocimiento | OSINT pasivo (theHarvester, Shodan, FOFA), reconocimiento activo de red, reconocimiento web (subfinder, nuclei) |
 | 25 | Seguridad Web | 45 vulns OWASP/PayloadsAllTheThings — inyección (SQLi, comandos, SSTI, XXE, CRLF, LDAP, NoSQL, XSLT, XPath, SSI, HPP), cross-site/cliente (XSS, CSRF, Clickjacking, CORS, CSS, WebSockets, DOM Clobbering, Tabnabbing, XS-Leaks), SSRF/redirección, archivos/rutas, lógica/acceso (IDOR, deserialización, race conditions, type juggling, ORM leak, mass assignment…), autenticación (JWT, SAML, OAuth, account takeover, fuerza bruta), API (GraphQL, fugas de API keys) |
-| 26 | Post-Explotación | Escalada de privilegios Linux/Windows, persistencia, pivoting de red, Active Directory (ataques) |
+| 26 | Post-Explotación | Escalada de privilegios Linux/Windows, persistencia, pivoting de red, Active Directory (ataques), CrackMapExec/NetExec |
+| 27 | Cracking de Contraseñas | Extracción de hashes (`*2john`, `unshadow`, SAM/NTDS), Hashcat (GPU), John the Ripper (CPU/multiformato), fuerza bruta online con Hydra y Medusa |
+| 28 | Esteganografía | Estegoanálisis de archivos (`file`, `exiftool`, `strings`, `binwalk`), Steghide, StegSeek y zsteg |
 
 ### `> ./_adjuntos/`
 
@@ -86,6 +88,7 @@ El vault reúne y reescribe material de estudio de las siguientes fuentes públi
 | [swisskyrepo/PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) | MIT | 24 · 25 · 26 (reconocimiento, seguridad web, post-explotación, AD) |
 | [swisskyrepo/InternalAllTheThings](https://swisskyrepo.github.io/InternalAllTheThings/) | MIT | 26 (escalada, pivoting, Active Directory) |
 | [pulentoski/repositorio-configuraciones](https://github.com/pulentoski/repositorio-configuraciones/tree/main/Redes) | — | 00–23 (redes, Cisco, Linux, IoT, cloud) |
+| [pulentoski/Herramientas-de-pentesting](https://github.com/pulentoski/Herramientas-de-pentesting) | — | 15 · 26 · 27 · 28 (WPScan, sqlmap, CrackMapExec, cracking, esteganografía) |
 | [aw-junaid/Kali-Linux](https://github.com/aw-junaid/Kali-Linux) | MIT | Fase futura — catálogo de herramientas Kali |
 
 > Todas las contraseñas, IPs y nombres de dominio en los ejemplos son ficticios / de laboratorio. Material con fines educativos.

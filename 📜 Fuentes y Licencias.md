@@ -23,6 +23,10 @@ Este vault reúne y reorganiza material de estudio de **redes, sistemas y cibers
 - Licencia: **MIT** — © 2019 Swissky
 - Uso en el vault: base de las secciones de **seguridad web** (25) y la metodología ofensiva posterior (recon, post-explotación, Active Directory, cracking, cloud). Las notas son adaptaciones condensadas; los payloads se incluyen como referencia.
 
+### pulentoski/Herramientas-de-pentesting
+- Repo: <https://github.com/pulentoski/Herramientas-de-pentesting>
+- Uso en el vault: base de las secciones **27 · Cracking de Contraseñas** (Hashcat, John the Ripper, Hydra/Medusa, extracción de hashes `*2john`) y **28 · Esteganografía** (StegSeek/Steghide), más las fichas de **WPScan** y **CrackMapExec/NetExec**. Las notas son adaptaciones condensadas y reescritas al formato del vault; no se importan los exploits ejecutables del repo original.
+
 ### aw-junaid/Kali-Linux *(pendiente — fase posterior)*
 - Repo: <https://github.com/aw-junaid/Kali-Linux> — Licencia **MIT**
 - Uso previsto: catálogo de **herramientas de Kali** (sección 31).

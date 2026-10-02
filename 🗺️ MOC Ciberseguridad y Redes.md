@@ -24,7 +24,7 @@ aliases:
 | 🔒 Seguridad Cisco | [Seguridad Cisco](#07--seguridad-cisco) · [Conexiones remotas](#08--conexiones-remotas) · [MikroTik](#09--mikrotik) |
 | 💻 Sistemas | [Linux](#10--sistemas-operativos-linux) · [Contenedores y AD](#11--contenedores-y-directorio-activo) |
 | 🛡️ Defensiva | [Criptografía](#12--criptografía) · [Firewalls](#13--firewalls) · [IDS/IPS](#14--ids-e-ips) |
-| ⚔️ Ofensiva | [Reconocimiento](#24--reconocimiento) · [Pentesting](#15--pentesting) · [Post-Explotación](#26--post-explotación) · [Phishing](#16--phishing) · [Seguridad Web](#25--seguridad-web-owasp--payloadsallthethings) |
+| ⚔️ Ofensiva | [Reconocimiento](#24--reconocimiento) · [Pentesting](#15--pentesting) · [Cracking](#27--cracking-de-contraseñas) · [Esteganografía](#28--esteganografía) · [Post-Explotación](#26--post-explotación) · [Phishing](#16--phishing) · [Seguridad Web](#25--seguridad-web-owasp--payloadsallthethings) |
 | 📊 Monitoreo | [Monitoreo](#17--monitoreo-y-rendimiento) |
 | 📡 IoT / Cloud | [IoT](#18--iot) · [Meshtastic](#19--meshtastic) · [Cloud](#20--cloud) · [Servicios](#21--servicios) |
 | ⚙️ Dev | [Automatización](#22--automatización) · [Programación](#23--programación) |
@@ -46,7 +46,7 @@ aliases:
 | Gobuster / WFuzz | [[Fuzzing de Directorios y Subdominios]] |
 | GoPhish | [[GoPhish]] |
 | GPG | [[GPG - cifrado asimétrico y firmas]] |
-| Hydra | [[Pentesting en Redes]] |
+| Hydra | [[Hydra y Medusa]] · [[Pentesting en Redes]] |
 | iperf3 | [[iperf3 test de velocidad real]] |
 | iptables | [[iptables]] |
 | Kali Linux | [[Laboratorio Kali Linux en Windows]] |
@@ -63,6 +63,14 @@ aliases:
 | GTFOBins | [[Escalada de Privilegios Linux]] |
 | Chisel / Ligolo-ng | [[Pivoting de Red]] |
 | proxychains | [[Pivoting de Red]] |
+| Hashcat | [[Hashcat]] |
+| John the Ripper / *2john | [[John the Ripper]] · [[Proceso de Extracción de Hashes]] |
+| Medusa | [[Hydra y Medusa]] |
+| CrackMapExec / NetExec | [[CrackMapExec - NetExec]] |
+| WPScan | [[WPScan]] |
+| sqlmap | [[sqlmap]] |
+| StegSeek / Steghide / zsteg | [[Esteganografía y análisis de archivos]] |
+| binwalk / exiftool | [[Esteganografía y análisis de archivos]] |
 | Impacket | [[Escalada de Privilegios Windows]] · [[Active Directory — Ataques]] |
 | OpenSSL | [[OpenSSL]] |
 | pfSense | [[Portal cautivo en pfSense]] |
@@ -181,12 +189,23 @@ aliases:
 - [[Nmap]] — descubrimiento de hosts, puertos, servicios y SO.
 - [[Pentesting en Redes]] — Nmap, fuerza bruta SSH con Hydra y DoS con hping3.
 - [[Fuzzing de Directorios y Subdominios]] — enumeración web con Gobuster, Feroxbuster y WFuzz.
+- [[WPScan]] — auditoría de WordPress: core, plugins/temas vulnerables, usuarios y bruteforce de login.
+- [[sqlmap]] — explotación automática de SQLi: enumeración, volcado de BD y shell.
 - [[ARP Spoofing y MitM]] — envenenamiento ARP, DNS Spoofing y MitM con arpspoof/Bettercap.
 - [[Metasploit y Payload Reverse TCP]] — payload con msfvenom y reverse shell Meterpreter.
 - [[Metasploit — Módulos avanzados]] — workspaces, auxiliares, msfvenom multi-formato, gestión de sesiones, post-explotación completa y pivoting.
 - [[Kali Linux — Herramientas (catálogo)]] — catálogo por fase: reconocimiento, explotación web, cracking, wireless, MitM, shells y wordlists.
 - [[Laboratorio DVWA (CTF)]] — app web vulnerable (OWASP) en Docker para práctica.
 - [[Laboratorio Kali Linux en Windows]] — montar Kali en WSL para un entorno de pentesting.
+
+## 27 · Cracking de Contraseñas
+- [[Proceso de Extracción de Hashes]] — scripts `*2john` (ssh/zip/pdf/keepass), `unshadow`, SAM/NTDS y capturas de red.
+- [[Hashcat]] — cracking offline por GPU: modos de hash, diccionario, máscara, reglas e híbrido.
+- [[John the Ripper]] — cracking offline multiformato en CPU, extracción `*2john` y autodetección.
+- [[Hydra y Medusa]] — fuerza bruta **online** contra SSH, FTP, RDP, SMB y formularios web.
+
+## 28 · Esteganografía
+- [[Esteganografía y análisis de archivos]] — flujo de estegoanálisis: `file`/`exiftool`/`strings`/`binwalk`, Steghide, StegSeek y zsteg.
 
 ## 16 · Phishing
 - [[GoPhish]] — framework de phishing simulado en Kali con MailHog como SMTP local.
@@ -243,6 +262,7 @@ aliases:
 - [[Persistencia Post-Explotación]] — crontab, systemd, SSH keys, registro, tareas programadas, reverse shells.
 - [[Pivoting de Red]] — SSH tunneling, proxychains, Chisel, Ligolo-ng, netsh, graftcp.
 - [[Active Directory — Ataques]] — enumeración (BloodHound), AS-REP/Kerberoasting, DCSync, Golden/Silver Ticket, NTLM Relay, abuso de ACLs y delegación.
+- [[CrackMapExec - NetExec]] — reconocimiento SMB/LDAP/WinRM, spraying, Pass-the-Hash, volcado SAM/NTDS y ejecución remota en redes Windows/AD.
 
 ## 25 · Seguridad Web (OWASP / PayloadsAllTheThings)
 > [!warning] Contenido para pruebas **autorizadas/educativas**. Ver [[📜 Fuentes y Licencias]].
@@ -313,4 +333,4 @@ aliases:
 
 ## 🔖 Etiquetas principales
 
-`#cisco` · `#enrutamiento` · `#switching` · `#seguridad` · `#qos` · `#acl` · `#dhcp` · `#vlan` · `#ssh` · `#mikrotik` · `#fundamentos` · `#linux` · `#systemd` · `#docker` · `#criptografia` · `#firewall` · `#ids` · `#pentesting` · `#phishing` · `#monitoreo` · `#zabbix` · `#iot` · `#mqtt` · `#meshtastic` · `#cloud` · `#aws` · `#automatizacion` · `#programacion` · `#seguridad-web` · `#owasp` · `#sqli` · `#xss` · `#ssrf`
+`#cisco` · `#enrutamiento` · `#switching` · `#seguridad` · `#qos` · `#acl` · `#dhcp` · `#vlan` · `#ssh` · `#mikrotik` · `#fundamentos` · `#linux` · `#systemd` · `#docker` · `#criptografia` · `#firewall` · `#ids` · `#pentesting` · `#phishing` · `#monitoreo` · `#zabbix` · `#iot` · `#mqtt` · `#meshtastic` · `#cloud` · `#aws` · `#automatizacion` · `#programacion` · `#seguridad-web` · `#owasp` · `#sqli` · `#xss` · `#ssrf` · `#cracking` · `#fuerza-bruta` · `#esteganografia` · `#active-directory`
