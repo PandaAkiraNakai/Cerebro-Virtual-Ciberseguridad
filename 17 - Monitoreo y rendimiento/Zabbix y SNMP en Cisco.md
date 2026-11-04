@@ -60,7 +60,10 @@ write memory
 > [!tip] Lado Zabbix
 > En Zabbix la IP, la versión (SNMPv2c) y el nombre de comunidad deben coincidir exactamente con lo configurado en el router. Asocia una plantilla SNMP apropiada al host para recibir los gráficos.
 
+> [!info] Versión segura
+> SNMPv2c no cifra nada. Para autenticación y cifrado con usuarios, vistas y ACL, mira [[SNMPv3 en Cisco]].
+
 ---
 📎 Guías: ![[Zabbix-SNMP-Cisco.pdf]]
 
-🔗 Relacionado: [[Zabbix y SNMP en MikroTik]] · [[Splunk Enterprise]] · [[Wireshark]]
+🔗 Relacionado: [[SNMPv3 en Cisco]] · [[Zabbix 7.4 con MySQL]] · [[Zabbix y SNMP en MikroTik]] · [[Splunk Enterprise]] · [[Wireshark]]

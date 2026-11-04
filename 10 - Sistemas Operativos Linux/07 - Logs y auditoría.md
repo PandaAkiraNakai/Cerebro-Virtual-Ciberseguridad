@@ -97,15 +97,21 @@ logrotate -f /etc/logrotate.conf    # Forzar rotación ahora
 
 ### Ejemplo de configuración logrotate
 
+logrotate no admite comentarios al final de la línea: van en su propia línea. La retención define cuánto tiempo se conserva la evidencia (NIST AU-11).
+
 ```bash
 /var/log/miapp/*.log {
-    daily               # Rotar diariamente
-    rotate 7            # Mantener 7 archivos
-    compress            # Comprimir logs viejos
-    delaycompress       # Comprimir desde el segundo log
-    missingok           # No error si no existe el archivo
-    notifempty          # No rotar si está vacío
-    create 0640 www-data adm   # Permisos del nuevo archivo
+    # Rotar a diario y mantener 7 archivos
+    daily
+    rotate 7
+    # Comprimir los viejos, desde el segundo
+    compress
+    delaycompress
+    # Sin error si no existe; no rotar si está vacío
+    missingok
+    notifempty
+    # Permisos del archivo nuevo
+    create 0640 www-data adm
     postrotate
         systemctl reload nginx
     endscript
@@ -154,6 +160,41 @@ grep "Invalid user\|Failed password for root" /var/log/auth.log
 # Con journalctl
 journalctl -u ssh --since "24 hours ago" | grep -i "failed\|invalid"
 ```
+
+### Eventos de autenticación en auth.log (Ubuntu)
+
+Cada intento de acceso o uso de sudo deja una línea con fecha, usuario, IP y resultado. Con `PasswordAuthentication no` dejan de aparecer las líneas `Failed password`; los fallos se ven con los mensajes de esta tabla.
+
+| Evento | Línea típica |
+|---|---|
+| Login con llave exitoso | `sshd[...]: Accepted publickey for usr_admin from 203.0.113.10 port 51234 ssh2: ED25519 SHA256:...` |
+| Llave correcta, falta el MFA | `sshd[...]: Partial publickey for usr_admin from 203.0.113.10 ...` |
+| MFA exitoso | `sshd[...]: Accepted keyboard-interactive/pam for usr_admin from 203.0.113.10 ...` |
+| Código MFA incorrecto | `sshd(pam_google_authenticator)[...]: Invalid verification code for usr_admin` |
+| Cliente sin llave válida | `sshd[...]: Connection closed by authenticating user usr_admin 203.0.113.10 port 51234 [preauth]` |
+| Usuario inexistente | `sshd[...]: Invalid user admin from 198.51.100.7 port 40022` |
+| Intento como root | `sshd[...]: ROOT LOGIN REFUSED FROM 198.51.100.7 port 40022` |
+| Grupo no autorizado | `sshd[...]: User invitado from 203.0.113.10 not allowed because none of user's groups are listed in AllowGroups` |
+| sudo permitido | `sudo: usr_admin : TTY=pts/0 ; PWD=/home/usr_admin ; USER=root ; COMMAND=/usr/bin/apt update` |
+| sudo con comando no autorizado | `sudo: usr_auditor : command not allowed ; ... ; COMMAND=/usr/bin/cat /etc/shadow` |
+| sudo sin permisos | `sudo: invitado : user NOT in sudoers ; ... ; COMMAND=/usr/bin/ls /root` |
+
+```bash
+# Accesos SSH: exitosos, parciales, fallidos y rechazados
+sudo grep -E "Accepted|Partial|Failed|Invalid|REFUSED|not allowed|Connection closed by authenticating" /var/log/auth.log
+# Uso de sudo, permitido y denegado
+sudo grep "sudo:" /var/log/auth.log
+sudo grep -E "command not allowed|NOT in sudoers" /var/log/auth.log
+# Códigos MFA incorrectos
+sudo grep "Invalid verification code" /var/log/auth.log
+# Sesiones: quién entró, quién falló, quién está conectado
+last -a | head -20
+sudo lastb -a | head -20
+who
+```
+
+> [!tip] Cómo citar un evento en un informe
+> Fecha y hora → servicio (`sshd`, `sudo`) → usuario → IP de origen → resultado. Es el contenido mínimo que exige NIST AU-3 (ver [[Marcos normativos (NIST SP 800-53, Well-Architected y CSA CCM)]]).
 
 ## Centralización de logs con rsyslog
 

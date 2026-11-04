@@ -157,4 +157,4 @@ nmap -sn 10.0.0.0/24 | grep report
 > Si `ping 8.8.8.8` funciona pero `ping google.com` falla, el problema es de resolución DNS, no de conectividad física.
 
 ---
-🔗 Relacionado: [[01 - Inspección del sistema]] · [[03 - Procesos y rendimiento]] · [[SSH en Linux]]
+🔗 Relacionado: [[01 - Inspección del sistema]] · [[03 - Procesos y rendimiento]] · [[SSH en Linux]] · [[Configuración de red por distribución]]

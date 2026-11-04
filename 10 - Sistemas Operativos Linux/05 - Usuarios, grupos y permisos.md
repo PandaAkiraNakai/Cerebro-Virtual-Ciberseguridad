@@ -154,9 +154,46 @@ usuario ALL=(ALL:ALL) ALL
 # Sin pedir contraseña
 usuario ALL=(ALL) NOPASSWD: ALL
 
-# Solo ciertos comandos
-usuario ALL=(ALL) /bin/systemctl restart nginx, /bin/journalctl
+# Solo ciertos comandos, exactos y sin paginador (evita el escape a shell)
+usuario ALL=(ALL) /usr/bin/systemctl restart nginx, /usr/bin/journalctl --no-pager -u nginx
 ```
+
+### Permisos por rol con `/etc/sudoers.d/` (RBAC)
+
+No edites `/etc/sudoers` directamente: crea un archivo por rol. El `%` indica que la regla aplica a un grupo. sudo aplica mínimo privilegio y deja registro de cada uso en `auth.log` (NIST AC-6).
+
+```bash
+sudo visudo -f /etc/sudoers.d/sysops
+sudo visudo -f /etc/sudoers.d/auditores
+```
+
+```bash
+# /etc/sudoers.d/sysops — administración completa
+%sysops    ALL=(ALL:ALL) ALL
+
+# /etc/sudoers.d/auditores — solo lectura de registros, con comandos exactos
+%auditores ALL=(root) /usr/bin/tail -n 200 /var/log/auth.log, /usr/bin/journalctl --no-pager -u ssh, /usr/bin/lastb
+```
+
+```bash
+sudo -l -U usr_auditor      # qué puede ejecutar un usuario
+sudo visudo -c              # valida todos los archivos de sudoers
+sudo passwd usr_admin       # aunque SSH entre con llave, sudo pide contraseña
+sudo usermod -aG adm usr_auditor   # alternativa sin sudo: en Ubuntu, adm lee /var/log/auth.log
+```
+
+### Escape a shell y comodines
+
+Algunos comandos abren una shell desde dentro. Autorizados con sudo, entregan root:
+
+| Comando | Escape |
+|---|---|
+| `less`, `more`, `man` | `!sh` |
+| `vi`, `vim`, `nano` | `:!sh` / `^R^X` |
+| `journalctl` sin `--no-pager` | abre `less` → `!sh` |
+| `find` | `-exec /bin/sh \;` |
+
+Los comodines también son peligrosos: `journalctl --no-pager *` permitiría `--vacuum-time=1s`, que **borra los logs** y rompe la separación de funciones. Autoriza comandos exactos, con sus argumentos, sin paginador y sin `*`. Referencia: [GTFOBins](https://gtfobins.github.io/) y [[Escalada de Privilegios Linux]].
 
 > [!warning] Edita sudoers solo con visudo
 > `visudo` valida la sintaxis antes de guardar. Un error tipográfico editando `/etc/sudoers` directamente puede dejarte sin acceso a sudo.

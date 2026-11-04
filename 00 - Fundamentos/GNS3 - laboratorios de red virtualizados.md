@@ -73,6 +73,44 @@ Lo que se virtualiza es distinto: **una VM virtualiza el hardware** y arranca su
 
 La regla práctica: **contenedor** para servicios Linux de los que quieras levantar muchos; **VM** cuando necesites otro kernel u otro sistema operativo — routers y switches Cisco, pfSense, Windows Server.
 
+### Plantilla de switch vIOS-L2 (QEMU)
+
+vIOS-L2 (IOS 15.2) sirve para seguridad de capa 2, VLAN, troncales, [[EtherChannel con LACP|EtherChannel]], SVI, [[DHCP Snooping]] e Inter-VLAN con `ip routing`. Se agrega con el appliance oficial `cisco-vios-l2.gns3a` (**File → Import appliance**) o a mano en **Edit → Preferences → QEMU VMs → New**.
+
+| Pestaña | Campo | Valor |
+|---|---|---|
+| General | RAM / vCPU | 512 MB (768 MB si se reinicia en bucle) / 1 |
+| General | Category · Console | Switches · telnet |
+| General | On close | Power off the VM |
+| Network | Adapters · Type | 8 · Intel Gigabit Ethernet (e1000) |
+| Network | Name format · Segment size | `Gi{1}/{0}` · `4` |
+| Advanced | Use as a linked base VM | Activado |
+| Advanced | Options | `-no-kvm` **solo** si el anfitrión no tiene KVM |
+
+> [!tip] Etiquetas que coinciden con el IOS
+> vIOS-L2 agrupa los puertos de a cuatro (`Gi0/0`-`Gi0/3`, `Gi1/0`-`Gi1/3`). Con `Gi{1}/{0}` y segmento 4, las etiquetas de GNS3 coinciden con las del IOS. El *name format* solo cambia la etiqueta, no el nombre dentro del IOS.
+
+`-no-kvm` usa emulación TCG: funciona, pero el arranque tarda varios minutos. Comprueba KVM con `ls /dev/kvm` y quita la opción si existe.
+
+```cisco
+show version                  ! vIOS-L2, IOS 15.2
+show ip interface brief       ! Gi0/0-Gi0/3 y Gi1/0-Gi1/3 con 8 adaptadores
+configure terminal
+ ip routing                   ! habilita capa 3
+ vlan 10
+ interface vlan 10
+  ip address 192.168.10.1 255.255.255.0
+  no shutdown                 ! queda up/up cuando un puerto activo está en la VLAN 10
+```
+
+| Problema | Solución |
+|---|---|
+| Reinicios en bucle | Más RAM (768 o 1024 MB) |
+| Arranque muy lento | Activa VT-x/AMD-V y quita `-no-kvm` |
+| `KVM acceleration can't be used` | Agrega `-no-kvm` |
+| `ip routing` no existe | La imagen no es vIOS-L2 (`show version`) |
+| SVI en `down/down` | Ningún puerto activo en esa VLAN |
+
 ## Flujo de trabajo
 
 1. **Plantillas** — importar la imagen una vez en *Edit → Preferences* (IOS routers, Qemu VMs, Docker containers). Después se arrastran al lienzo tantas veces como haga falta.
